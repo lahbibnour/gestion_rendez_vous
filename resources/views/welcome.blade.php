@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  
         <!-- Styles -->
         <style>
             html, body {
@@ -18,6 +19,19 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+            .img{
+                height:400px;
+                width:550px;
+                float:right;
+                margin-left:70px;
+                border-radius:35px;
+            }
+            .txt{
+                font-size:50px;
+                float:left;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                margin-top:75px;
             }
 
             .full-height {
@@ -46,6 +60,11 @@
 
             .title {
                 font-size: 84px;
+            }
+            .titre{
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-size:15px;
+                color:black;
             }
 
             .links > a {
@@ -80,11 +99,14 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Bienvenue dans votre cabinet
-                </div>
 
-               
+            
+            
+                <div class="txt">
+                    Bienvenue dans votre <br> cabinet
+                   <h1 class="titre">Qui jouit d'une  santé parfaite  possède un trésor</h1>
+                </div>
+                <img src="image/medical.jpg" alt="" class="img">
             </div>
         </div>
     </body>
