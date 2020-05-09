@@ -18,26 +18,7 @@ class MedecinController extends Controller
         //
     }
 
-    public function test()
-    {
      
-    if (user()->admin ==0)
-        return view('medecin');
-    
-        }
-
-        /*
-        public function deleteCharacter ($char_delete_id)
-{
-    if (Auth::user()->id == $delCharacterUserID) {
-        $deleteSuccess = 1;
-
-    } else {
-        $deleteSuccess = 0;
-    }
-    return redirect('/characters')->with('deleteSuccess', $deleteSuccess);
-}
-        */
 
     /**
      * Show the form for creating a new resource.
