@@ -27,7 +27,7 @@
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Patient</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown09">
-                            <a class="dropdown-item" href="#">Liste Patient</a>
+                            <a class="dropdown-item" href="/patient">Liste Patient</a>
                             </div>
                         </li>
                         

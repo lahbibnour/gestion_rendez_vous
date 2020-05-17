@@ -13,7 +13,12 @@ class SecretaireController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function test2()
+    {
+    if ($user->admin ==1)
+        return view('secretaire');
     
+        }
     public function index()
     {
         //
