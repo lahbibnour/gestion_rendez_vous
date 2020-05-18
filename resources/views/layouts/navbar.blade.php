@@ -1,7 +1,7 @@
-<nav class="mb-1 navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;>
     <div class="container">
         <a class="navbar-brand"  href="{{ url('/') }}">
-            {{ config('app.name', 'Cabinet') }}
+        {{ config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
