@@ -15,12 +15,11 @@ Route::get('/', 'AppController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-<<<<<<< HEAD
 Route::resource('/patient','PatientController');
 
-=======
+
 Route::get('/medecin', 'MedecinController@test')->name('medecin')->middleware('auth');
 Route::get('/secretaire', 'SecretaireController@test2')->name('secretaire')->middleware('auth');
->>>>>>> interface se connecter
+
 
 

@@ -25,7 +25,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view ('patient.create');
     }
 
     /**
@@ -36,7 +36,26 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   $request->validate([
+       'Nom'=>'required',
+       'Prenom'=>'required',
+       'Age'=>'required',
+       'Num_tel'=>'required',
+       'Etat'=>'required',
+       'Sexe'=>'required'
+      ]);
+      $patient=new Patient;
+$patient->Nom=$request->Nom;
+$patient->Prenom=$request->Prenom;
+$patient->Age=$request->Age;
+$patient->Num_tel=$request->Num_tel;
+$patient->Etat=$request->Etat;
+$patient->Sexe=$request->Sexe;
+$patient->ordannance=$request->ordonnance;
+$patient->certificat=$request->certificat;
+$patient->save();
+
+return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bien ajouté');
     }
 
     /**
