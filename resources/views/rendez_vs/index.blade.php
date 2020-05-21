@@ -3,48 +3,51 @@
 @section('title', 'Liste des rendez_vous')
 
 @include('layouts.navbar')
-
-
 @section('content')
- 
+
 <div class="container">
-
-<h1>Liste rendez vous</h1>
-
-<!--@foreach($Rdv as $Rdvs)
-<div>
-    {{ $Rdvs ->patient_id }} - {{ $Rdvs -> dateRdv}}
+<div class="jumbotron">
+<h1 style="text-align:center">Liste rendez vous</h1>
 </div>
-@endforeach-->
 
 <table class="table table-hover">
   <thead>
     <tr>
-      
-      <th scope="col">Num de patient</th>
-      <th scope="col">Date de la visite</th>
-      <th scope="col">Heure du visite</th>
-      <th scope="col">Operation</th>
+      <th scope="col">ID rendez-vs</th>
+      <th scope="col">nom patient</th>
+      <th scope="col">prenom patient</th>
+      <th scope="col">Date Rendez vous</th>
+      <th scope="col">Heure du rendez vous</th>
+      <th scope="col">Operations</th>
       
     </tr>
   </thead>
   <tbody>
-  @foreach($Rdv as $Rdvs)
-    <tr>
-     
-      <td>{{ $Rdvs ->patient_id }}</td>
-      <td>{{ $Rdvs -> dateRdv}}</td>
-      <td>{{ $Rdvs -> heure}}</td>
+  @foreach($data as $Rdvs)
+        @if($Rdvs->heure >= now())
+            <tr>
+                <td>{{ $Rdvs ->id }}</td>  
+                <td>{{ $Rdvs ->nom }}</td>
+                <td>{{ $Rdvs -> prenom}}</td>
+                <td>{{ $Rdvs -> dateRdv}}</td>
+                <td>{{ $Rdvs -> heure}}</td>
+                <td>
+                    <a href="#" class="btn btn-outline-dark">Ordonnace </a>
+                    <a href="#" class="btn btn-outline-dark" >Dossier Médical</a>
+                    <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>
 
-      <td>
-            <a href="#" class="btn btn-outline-info">Ordonnace </a>
-            <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#confirmDeleteModal">Dossier Médical</a>
-            
-        </td>
-    </tr>
+                </td>
+            </tr>
+        @endif
     @endforeach
   </tbody>
+  
 </table>
+<div class="row">
+        <div class="col-12 d-flex justify-content-center pt-4">
+            {{ $data -> links() }}
+        </div>
+</div>
 
 </div>
 @endsection

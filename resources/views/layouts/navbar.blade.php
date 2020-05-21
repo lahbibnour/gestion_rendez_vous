@@ -15,10 +15,10 @@
                    
                         
                         <li class="nav-item">
-                            <a href="join-table" class="nav-link">Les Patients d'Aujourd'Hui</a>
+                            <a href="rendez_vs" class="nav-link">Les Patients d'Aujourd'Hui</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Ordonnance</a>
+                            <a href="/ordonnance" class="nav-link">Ordonnance</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contact</a>
