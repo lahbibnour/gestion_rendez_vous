@@ -15,11 +15,18 @@
                    
                         
                         <li class="nav-item">
-                            <a href="rendez_vs" class="nav-link">Les Patients d'Aujourd'Hui</a>
+                            <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Les Patients d'Aujourd'Hui</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/ordonnance" class="nav-link">Ordonnance</a>
+                        <!-- 28/05/2020 -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordonnance</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown09">
+                            <a class="dropdown-item" href="#">nouvelle ordonnance</a>
+                            <a class="dropdown-item" href="#">Mes Ordonnances du jour</a> 
+                            <a class="dropdown-item" href="#">Archive d'Ordonnances</a>   
                         </li>
+
+                        <!-- end 28/05/2020 -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contact</a>
                         </li>

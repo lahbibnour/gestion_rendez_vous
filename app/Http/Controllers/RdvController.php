@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Rdv;
 use Illuminate\Http\Request;
+use DB;
+
 
 class RdvController extends Controller
 {
@@ -14,9 +16,13 @@ class RdvController extends Controller
      */
     public function index()
     {
-        $Rdv = Rdv::all();
-
-        return view ('rendez_vs.index' , compact('Rdv'));
+        
+        $data = DB::table('rdvs')
+                -> join('patients' , 'patients.id' ,'=' , 'rdvs.patient_id')
+                ->select ('rdvs.id','patients.nom' , 'patients.prenom' , 'rdvs.dateRdv' , 'rdvs.heure')
+                ->paginate();
+        return view('rendez_vs.index' , compact('data'));        
+    
     }
 
     /**
@@ -46,9 +52,10 @@ class RdvController extends Controller
      * @param  \App\Rdv  $rdv
      * @return \Illuminate\Http\Response
      */
-    public function show(Rdv $rdv)
+    public function show($id)
     {
-      
+        $data = Rdv::findOrFail($id);
+        return view('rendez_vs.show' , compact('data')); 
     }
 
     /**

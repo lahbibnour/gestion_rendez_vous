@@ -19,10 +19,12 @@ class CreateConsultationsTable extends Migration
             $table->bigInteger('medecin_id')->unsigned();
             $table->date('date');
             $table->time('duree');
-            $table->string('description');
+            $table->text('ordannance',100000);
+            $table->text('observation',100000);
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('medecin_id')->references('id')->on('medecins');
+
 
         });
     }

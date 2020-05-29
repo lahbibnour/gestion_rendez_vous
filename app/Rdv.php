@@ -14,4 +14,9 @@ class Rdv extends Model
     {
         return $this->belongsTo('App\Patient');
     }
+    public function Consultation()
+    {
+        return $this->hasOne('App\Consultation');
+    }
+    
 }

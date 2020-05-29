@@ -5,6 +5,24 @@
 @include('layouts.navbar')
 @section('content')
 
+@if(session('AddConsultation'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('AddConsultation') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+@if(session('AddOrdonnance'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('AddOrdonnance') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+
 <div class="container">
 <div class="jumbotron">
 <h1 style="text-align:center">Liste rendez vous</h1>
@@ -32,8 +50,8 @@
                 <td>{{ $Rdvs -> dateRdv}}</td>
                 <td>{{ $Rdvs -> heure}}</td>
                 <td>
-                    <a href="#" class="btn btn-outline-dark">Ordonnace </a>
-                    <a href="#" class="btn btn-outline-dark" >Dossier Médical</a>
+                    <a href=" {{ route('rendez_vs.show' , $Rdvs->id ) }} " class="btn btn-outline-dark">Plus De Détails </a>
+                   
                     <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>
 
                 </td>

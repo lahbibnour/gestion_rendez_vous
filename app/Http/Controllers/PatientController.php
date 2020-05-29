@@ -26,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view ('patient.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'ordonnance' => 'required'
+
+        ]);
+            $ordonnance = new Patient;
+
     }
 
     /**

@@ -7,12 +7,12 @@ use DB;
 
 class JoinTableController extends Controller
 {
-    public function index()
+    
+
+    public function show($id)
     {
-        $data = DB::table('rdvs')
-                -> join('patients' , 'patients.id' ,'=' , 'rdvs.patient_id')
-                ->select ('rdvs.id','patients.nom' , 'patients.prenom' , 'rdvs.dateRdv' , 'rdvs.heure')
-                ->paginate();
-        return view('rendez_vs.index' , compact('data'));        
+        $data = DB::findOrFail($id);
+        return view('rendez_vs.show');
     }
+
 }

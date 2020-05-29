@@ -35,7 +35,32 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $request->validate([
+            'patient_id' => 'required' ,
+            'medecin_id' => 'required' ,
+            'rdv_id' => 'required' ,
+            'date' => 'required' ,
+            'duree' => 'required' ,
+            'observation' => 'required',
+            'ordannance' => 'required'
+
+        ]);
+
+        $consultation = new Consultation;
+
+        $consultation->patient_id = $request->patient_id ;
+        $consultation->medecin_id = $request->medecin_id ;
+        $consultation->rdv_id = $request->rdv_id ;
+        $consultation->date = $request->date;
+        $consultation->duree = $request->duree;
+        $consultation->observation = $request->observation;
+        $consultation->ordannance = $request->ordannance;
+
+
+        $consultation->save();
+
+        return redirect()->route('rendez_vs.index')->with('AddConsultation', 'New Consultation Added successfully');
+        
     }
 
     /**
