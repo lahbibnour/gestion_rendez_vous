@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +36,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+       return view('patient.create');
     }
 
     /**
@@ -36,7 +47,28 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+           'nom' => 'required|string',
+           'prenom' => 'required|string',
+           'age' => 'required|min:20|max:80',
+           'num-tel' => 'required|number',
+           'etat' => 'required|string',
+           'sexe' => 'required|string'
+       ]);
+       $patient = new Patient;
+       $patient->id= $request->id;
+       $patient->nom = $request->nom;
+       $patient->prenom = $request->prenom;
+       $patient->age = $request->age;
+       $patient->num_tel = $request->num_tel;
+       $patient->etat = $request->etat;
+       $patient->sexe = $request->sexe;
+
+       $patient->save();
+
+       return redirect()->route('patient.index')->with('AjouterPatient','Nouveau patient ajouter avec succes');
+
+
     }
 
     /**

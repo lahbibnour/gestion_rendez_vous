@@ -3,6 +3,14 @@
 @section('title', 'Liste des patients')
 
 @section('content')
+@if (session('AjouterPatient'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{ (session('AjouterPatient')) }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <a href="{{ route('patient.create') }}" class="btn btn-secondary btn-lg btn-lg float-right" role="button"
     aria-pressed="true">Ajouter nouveau Patient</a>
 <h1>Liste des patients</h1>

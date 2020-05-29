@@ -21,9 +21,6 @@ class CreatePatientsTable extends Migration
             $table->string('num_tel');
             $table->string('etat');
             $table->string('sexe');
-            $table->text('ordannance',100000);
-            $table->text('certificat',100000);
-            $table->text('observation',100000);
             $table->timestamps();
 
         });
