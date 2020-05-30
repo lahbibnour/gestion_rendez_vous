@@ -47,8 +47,13 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
        
        $request->validate($this->validationRules());
+=======
+       $request->validate($this->validationRules());
+         
+>>>>>>> ae1c01c1582ae8fd98d9b2374f3e4782255553d2
        $patient = new Patient;
        $patient->nom = $request->nom;
        $patient->prenom = $request->prenom;
@@ -123,4 +128,18 @@ class PatientController extends Controller
         'sexe' => 'required',
         ];
     }
+<<<<<<< HEAD
 }
+=======
+    private function validationRules(){
+        return[
+        'nom' => 'required',
+        'prenom' => 'required',
+        'age' => 'required',
+        'num_tel' => 'required',
+        'etat' => 'required',
+        'sexe' => 'required',
+        ];
+    }
+}
+>>>>>>> ae1c01c1582ae8fd98d9b2374f3e4782255553d2
