@@ -23,24 +23,7 @@
                 <input type="time" name="duree" class="form-control form-control-lg" value="{{ old('duree') }}" id="duree" placeholder="">
                 @error('duree')<div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <!-- test 29/05/2020-->
-        <div class="col">
-            <label for="rdv_id">rendez-vous ID</label>
-                <input type="number" name="rdv_id" class="form-control form-control-lg" value="{{ old('rdv_id') }}" id="rdv_id" placeholder="">
-                @error('rdv_id')<div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <div class="col">
-            <label for="ordannance">Ordonnance</label>
-                <textarea type="text" name="ordannance" class="form-control form-control-lg" value="{{ old('ordannance') }}" id="ordannance" placeholder=""></textarea>
-                @error('ordannance')<div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-        <div class="col">
-            <label for="observation">Observation</label>
-                <textarea type="observation" name="observation" class="form-control form-control-lg" value="{{ old('observation') }}" id="observation" placeholder=""></textarea>
-                @error('observation')<div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-        <!--end test-->
-    </div>
         <div class="row">
         <div class="col">
             <label for="patient_id">Identifiant Patient </label>
@@ -55,6 +38,28 @@
 
         </div>
         </div>
+        <!-- test 29/05/2020-->
+        <div class="col">
+            <label for="rdv_id">rendez-vous ID</label>
+                <input type="number" name="rdv_id" class="form-control form-control-lg" value="{{ old('rdv_id') }}" id="rdv_id" placeholder="">
+                @error('rdv_id')<div class="text-danger">{{ $message }}</div> @enderror
+        </div>
+        <div class="row">
+
+        <div class="col">
+            <label for="ordannance">Ordonnance</label>
+                <textarea type="text" name="ordannance" class="form-control form-control-lg" value="{{ old('ordannance') }}" id="ordannance" placeholder=""></textarea>
+                @error('ordannance')<div class="text-danger">{{ $message }}</div> @enderror
+        </div>
+        <div class="col">
+            <label for="observation">Observation</label>
+                <textarea type="observation" name="observation" class="form-control form-control-lg" value="{{ old('observation') }}" id="observation" placeholder=""></textarea>
+                @error('observation')<div class="text-danger">{{ $message }}</div> @enderror
+        </div>
+        </div>
+        <!--end test-->
+    
+        
     
         <button type="submit" class="btn btn-outline-danger  float-right" style="margin:8px;">Annuler</button>
         <button type="submit" class="btn btn-outline-danger  float-right" style="margin:8px;">Enregistrer</button>

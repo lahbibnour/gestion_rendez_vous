@@ -14,7 +14,11 @@
     </div>
     <br />
 </div>
-    <h3> ID patient : {{ $data -> patient_id }}</h3>
+    <h3> Identifiant patient : {{ $data -> patient_id }}</h3>
+    <h3>Nom : {{ $data -> patient -> nom }}</h3>
+    <h3>Prenom : {{ $data ->patient -> prenom }}</h3>
+    <h3>Etat : {{ $data -> patient -> etat }}</h3>
+    <h3>Identifiant rendez-vous : {{ $data -> id }}</h3>
     <h3> date rendez-vous : {{ $data -> dateRdv }}</h3>
     <h3> heure rdv : {{ $data -> heure }}</h3>
     <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>

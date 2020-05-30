@@ -52,7 +52,6 @@
                 <td>
                     <a href=" {{ route('rendez_vs.show' , $Rdvs->id ) }} " class="btn btn-outline-dark">Plus De Détails </a>
                    
-                    <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>
 
                 </td>
             </tr>
