@@ -14,14 +14,27 @@
     </div>
     <br />
 </div>
-    <h3> Identifiant patient : {{ $data -> patient_id }}</h3>
-    <h3>Nom : {{ $data -> patient -> nom }}</h3>
-    <h3>Prenom : {{ $data ->patient -> prenom }}</h3>
-    <h3>Etat : {{ $data -> patient -> etat }}</h3>
-    <h3>Identifiant rendez-vous : {{ $data -> id }}</h3>
-    <h3> date rendez-vous : {{ $data -> dateRdv }}</h3>
-    <h3> heure rdv : {{ $data -> heure }}</h3>
+     
+    <div class="card text-center">
+  <div class="card-header">
+    Détails Rendez-vous Patient
+  </div>
+  <div class="card-body">
+    <h3 class="card-title"> {{ $data -> patient -> nom }} {{ $data ->patient -> prenom }}</h3>
+    <p class="card-text">
+    
+    <h5>Identifiant rendez-vous : {{ $data -> id }}</h5>
+    <h5>Identifiant Patient : {{ $data -> patient_id }}</h5>
+    <h5>Etat : {{ $data -> patient -> etat }}</h5>
+    <h5> date rendez-vous : {{ $data -> dateRdv }}</h5>
+    <h5> heure rdv : {{ $data -> heure }}</h5>
+    </p>
     <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>
+    <a href=" {{ route('consultation.show' , $data->id ) }} " class="btn btn-outline-dark">Dossier médical </a>
+
+  </div>
+  
+</div>
 
 
 </div>

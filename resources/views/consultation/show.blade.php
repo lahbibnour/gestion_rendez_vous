@@ -9,21 +9,22 @@
     <tr>
      
       <th scope="col">Ordonnance du consultation</th>
+      <th scope="col">Observation</th>
+      <th scope="col">date consultation</th>
+
    
      
       
     </tr>
   </thead>
   <tbody>
-  @foreach($info as $infos)
+ 
        
-            <tr>
-                
-                <td>{{ $infos ->ordannance }}</td>
-                
-            </tr>
+            <td>Ordonnance : {{ $data -> ordannance }}</td>
+            <td> {{ $data -> observation }}</td>
+            <td>{{  $data ->date }}</td>
       
-    @endforeach
+    
   </tbody>
   
 </table>

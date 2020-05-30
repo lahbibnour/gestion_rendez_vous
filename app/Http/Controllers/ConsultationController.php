@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use Illuminate\Http\Request;
+use DB;
 
 class ConsultationController extends Controller
 {
@@ -14,7 +15,16 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        //
+        //30/05/2020 test
+       $info= DB::table('consultations')
+                    ->whereExists(function($query)
+                    {
+                        $query->select(DB::raw(1))
+                              ->from('rdvs')
+                              ->whereRaw('consultations.patient_id = rdvs.patient_id');
+                    })
+                    ->get();
+                    return view('consultation.index' , compact('info')); 
     }
 
     /**
@@ -69,9 +79,13 @@ class ConsultationController extends Controller
      * @param  \App\Consultation  $consultation
      * @return \Illuminate\Http\Response
      */
-    public function show(Consultation $consultation)
+    public function show($id)
     {
-        //
+       
+        $data = Consultation::findOrFail($id);
+        return view('consultation.show' , compact('data'));
+        
+        
     }
 
     /**
