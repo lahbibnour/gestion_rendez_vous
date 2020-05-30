@@ -47,14 +47,8 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
-           'nom' => 'required|string',
-           'prenom' => 'required|string',
-           'age' => 'required|min:20|max:80',
-           'num-tel' => 'required|number',
-           'etat' => 'required|string',
-           'sexe' => 'required|string'
-       ]);
+       $request->validate($this->validationRules());
+         
        $patient = new Patient;
        $patient->id= $request->id;
        $patient->nom = $request->nom;
@@ -114,5 +108,15 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         //
+    }
+    private function validationRules(){
+        return[
+        'nom' => 'required',
+        'prenom' => 'required',
+        'age' => 'required',
+        'num_tel' => 'required',
+        'etat' => 'required',
+        'sexe' => 'required',
+        ];
     }
 }

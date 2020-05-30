@@ -14,8 +14,12 @@ Route::get('/', 'AppController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::resource('/patient','PatientController');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/home', 'AppController@home')->name('home');
+    Route::resource('/patient', 'PatientController');
+
+});
 
 
 

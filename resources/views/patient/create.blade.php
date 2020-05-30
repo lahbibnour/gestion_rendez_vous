@@ -12,27 +12,39 @@
       @csrf
       <div class="form-group">
     <label for="nom">Nom</label>
-    <input type="text" name="nom" class="form-control" id="nom" placeholder="Nom" required>
+    <input type="text" name="nom" class="form-control" value="{{ old('nom') }}" id="nom" placeholder="Nom">
+    @error('nom')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <div class="form-group">
     <label for="prenom">Prenom</label>
-    <input type="text" name="prenom"  class="form-control" id="prenom" placeholder="Prénom" required>
+    <input type="text" name="prenom"  class="form-control" value="{{ old('prenom') }}" id="prenom" placeholder="Prénom">
+    @error('prenom')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <div class="form-group">
-    <label for="prenom">Age</label>
-    <input type="number" name="age"  class="form-control" id="age" value="20" min="20" max="80" required>
+    <label for="age">Age</label>
+    <input type="number" name="age"  class="form-control" value="{{ old('age') }}" id="age" min="20" max="80" placeholder="00">
+    @error('age')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <div class="form-group">
     <label for="num">Num Tel</label>
-    <input type="text" name="num_tel"  class="form-control" id="num" placeholder="Num_Tel" required>
+    <input type="number" name="num_tel"  class="form-control" value="{{ old('num_tel') }}" id="num_tel" placeholder="Num_Tel">
+    @error('num_tel')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <div class="form-group">
     <label for="etat">Etat</label>
-    <input type="text" class="form-control" id="etat" placeholder="Etat" required>
+    <input type="text" name="etat" class="form-control" value="{{ old('etat') }}" id="etat" placeholder="Etat">
+    @error('etat')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <div class="form-group">
     <label for="sexe">Sexe</label>
-    <input type="text" name="sexe" class="form-control" id="sexe" placeholder="Sexe" required>
+    <input type="text" name="sexe" class="form-control" value="{{ old('sexe') }}" id="sexe" placeholder="Sexe">
+    @error('sexe')<div class="text-danger">{{ $message }}</div> @enderror
+
   </div>
   <button type="submit" type="button" class="btn btn-primary btn-block">Ajouter</button>
       </form>
