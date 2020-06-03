@@ -18,12 +18,9 @@ class CreatePatientsTable extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->integer('age')->unsigned();
-            $table->string('num_tel');
+            $table->bigInteger('num_tel')->unsigned();
             $table->string('etat');
             $table->string('sexe');
-            $table->text('ordannance',100000);
-            $table->text('certificat',100000);
-            $table->text('observation',100000);
             $table->timestamps();
 
         });

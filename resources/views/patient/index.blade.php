@@ -3,9 +3,18 @@
 @section('title', 'Liste des patients')
 @include('layouts.navbar')
 @section('content')
-@if(session('AddPatient'))
+
+@if (session('AjouterPatient'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{session('AddPatient')}}
+{{ (session('AjouterPatient')) }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+@if(session('updatePatient'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{session('updatePatient')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -20,10 +29,8 @@
 
             <th scope="col">Nom</th>
             <th scope="col">Prenom</th>
-            <th scope="col">age</th>
-            <th scope="col">Num_tel</th>
-            <th scope="col">Etat</th>
-            <th scope="col">Sexe</th>
+            
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -32,12 +39,17 @@
 
             <td>{{$patient->nom}}</td>
             <td>{{$patient->prenom}}</td>
-            <td>{{$patient->age}}</td>
-            <td>{{$patient->num_tel}}</td>
-            <td>{{$patient->etat}}</td>
-            <td>{{$patient->sexe}}</td>
+            
+            <td>
+            <div class="row">
+            <a href="{{ route('patient.show',$patient->id) }}" class="btn btn-outline-info">Details </a>
+            <a href="{{route('patient.edit',$patient->id)}}" class="btn btn-outline-success">Modifier</a>
+            
+            </div></td>
+            
         </tr>
         @endforeach
     </tbody>
 </table>
+
 @endsection

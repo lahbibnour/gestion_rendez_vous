@@ -11,21 +11,21 @@
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Nom">Nom</label>
-                    <input type="text" name="Nom" value="{{ old('Nom') }}" id="Nom" class="form-control" placeholder="" >
+                    <input type="text" name="nom" value="{{ old('Nom') }}" id="Nom" class="form-control" placeholder="" >
                       
                 </div>
             </div>
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Prenom">Prenom</label>
-                    <input type="text" value="{{old('Prenom')}}" name="Prenom" id="Prenom" class="form-control" aria-describedby="helpId">
+                    <input type="text" value="{{old('Prenom')}}" name="prenom" id="Prenom" class="form-control" aria-describedby="helpId">
                     
                 </div>
             </div>
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Age">Age</label>
-                    <input type="number" value="{{old('Age')}}" min="1" max="20" name="Age" id="Age" class="form-control" aria-describedby="helpId">
+                    <input type="number" value="{{old('Age')}}" min="1" max="20" name="age" id="Age" class="form-control" aria-describedby="helpId">
                 </div>
             </div>
         </div>
@@ -34,21 +34,21 @@
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Num_tel">Num_tel</label>
-                    <input type="number" name="Num_tel" value="{{ old('Num_tel') }}" id="Num_tel" class="form-control" placeholder="" >
+                    <input type="number" name="num_tel" value="{{ old('Num_tel') }}" id="Num_tel" class="form-control" placeholder="" >
                       
                 </div>
             </div>
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Etat">Etat</label>
-                    <input type="text" value="{{old('Etat')}}" name="Etat" id="Etat" class="form-control" aria-describedby="helpId">
+                    <input type="text" value="{{old('Etat')}}" name="etat" id="Etat" class="form-control" aria-describedby="helpId">
                     
                 </div>
             </div>
             <div class="col">
                 <div class="b4-form-group">
                     <label for="Sexe">Sexe</label>
-                    <input type="text" value="{{old('Sexe')}}" min="1" max="20" name="Sexe" id="Sexe" class="form-control" aria-describedby="helpId">
+                    <input type="text" value="{{old('Sexe')}}" min="1" max="20" name="sexe" id="Sexe" class="form-control" aria-describedby="helpId">
                     
                 </div>
             </div>
@@ -60,3 +60,5 @@
     </form>
 </fieldset>
 @endsection
+
+

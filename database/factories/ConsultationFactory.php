@@ -13,6 +13,8 @@ $factory->define(Consultation::class, function (Faker $faker) {
         'medecin_id' => Medecin::get('id')->random(),
         'date' => $faker->date,
         'duree' => $faker->time,
+        'ordannance'=> $faker->sentence,
+        'observation'=>$faker->sentence,
         'created_at' => now(),
         'updated_at' => now(),
     ];

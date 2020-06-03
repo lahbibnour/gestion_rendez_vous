@@ -14,12 +14,14 @@ Route::get('/', 'AppController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::resource('/patient','PatientController');
+Route::middleware('auth')->group(function () {
 
-
-Route::get('/medecin', 'MedecinController@test')->name('medecin')->middleware('auth');
-Route::get('/secretaire', 'SecretaireController@test2')->name('secretaire')->middleware('auth');
+    Route::get('/home', 'AppController@home')->name('home');
+    //Route::get('/rdv/{patient_id}', 'RdvController@getRdv');
+    Route::resource('/patient', 'PatientController');
+    Route::resource('/rdv', 'RdvController');
+    //Route::get('/patient/{patient_id}', 'JoinController@GetRdv');
+});
 
 
 

@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use Illuminate\Http\Request;
-
+use DB;
 class PatientController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +26,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::all();
+
         return view('patient.index',compact('patients'));
     }
 
@@ -25,7 +37,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view ('patient.create');
+       return view('patient.create');
     }
 
     /**
@@ -36,26 +48,20 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-   $request->validate([
-       'Nom'=>'required',
-       'Prenom'=>'required',
-       'Age'=>'required',
-       'Num_tel'=>'required',
-       'Etat'=>'required',
-       'Sexe'=>'required'
-      ]);
-      $patient=new Patient;
-$patient->Nom=$request->Nom;
-$patient->Prenom=$request->Prenom;
-$patient->Age=$request->Age;
-$patient->Num_tel=$request->Num_tel;
-$patient->Etat=$request->Etat;
-$patient->Sexe=$request->Sexe;
-$patient->ordannance=$request->ordonnance;
-$patient->certificat=$request->certificat;
-$patient->save();
 
-return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bien ajouté');
+       $request->validate($this->validationRules());
+       $patient = new Patient;
+       $patient->nom = $request->nom;
+       $patient->prenom = $request->prenom;
+       $patient->age = $request->age;
+       $patient->num_tel = $request->num_tel;
+       $patient->etat = $request->etat;
+       $patient->sexe = $request->sexe;
+       $patient->save();
+       //dd($request);
+       return redirect()->route('patient.index')->with('AjouterPatient', 'Nouveau patient a été ajouté');
+
+
     }
 
     /**
@@ -66,7 +72,14 @@ return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bi
      */
     public function show(Patient $patient)
     {
-        //
+        // $data  = DB::table('rdvs')
+        // ->join('patients', 'rdvs.patient_id', '=', 'patients.id')
+        // ->where('rdvs.patient_id', '=', 'patients.id')
+
+        // ->get();
+        
+        //var_dump($data);
+        return view('patient.show',compact('patient'));
     }
 
     /**
@@ -77,7 +90,7 @@ return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bi
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patient.edit', compact('patient'));
     }
 
     /**
@@ -89,7 +102,11 @@ return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bi
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $validatedData = $request->validate($this->validationRules());
+
+        $patient->update($validatedData);
+
+        return redirect()->route('patient.index', $patient->id)->with('updatePatient', 'patient a été bien modifié');
     }
 
     /**
@@ -100,6 +117,18 @@ return redirect()->route('patient.index')->with('AddPatient','Nouveau patient bi
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+
+        return redirect()->route('patient.index')->with('deletePatient', 'le patient a été bien supprimé');
+    }
+    private function validationRules()
+    {
+        return ['nom' => 'required',
+        'prenom' => 'required',
+        'age' => 'required',
+        'num_tel' => 'required',
+        'etat' => 'required',
+        'sexe' => 'required',
+        ];
     }
 }

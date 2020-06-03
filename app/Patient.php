@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
+   protected $guarded = array();
     public function medecin()
     {
        return $this->belongsToMany('App\Medecin');
@@ -14,5 +15,9 @@ class Patient extends Model
     public function secretaire()
     {
        return $this->belongsToMany('App\Secretaire');
+    }
+    public function rdv()
+    {
+       return $this->hasMany('App\Rdv');
     }
 }
