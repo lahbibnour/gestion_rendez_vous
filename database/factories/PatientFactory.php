@@ -11,6 +11,7 @@ $factory->define(Patient::class, function (Faker $faker) {
         'prenom' => $faker->word,
         'age' => $faker->randomDigitNotNull,
         'num_tel' => $faker->randomDigitNotNull,
+        'email' => $faker->unique()->safeEmail,
         'etat' => $faker->word,
         'sexe' => $faker->word,
         'created_at' => now(),

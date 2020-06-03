@@ -42,7 +42,7 @@
             
             <td>
             <div class="row">
-            <a href="{{ route('patient.show',$patient->id) }}" class="btn btn-outline-info">Details </a>
+            <a href="{{ route('patient.show',$patient->id) }}" class="btn btn-outline-danger">Details </a>
             <a href="{{route('patient.edit',$patient->id)}}" class="btn btn-outline-success">Modifier</a>
             
             </div></td>
