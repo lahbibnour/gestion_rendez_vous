@@ -55,6 +55,7 @@ class PatientController extends Controller
        $patient->prenom = $request->prenom;
        $patient->age = $request->age;
        $patient->num_tel = $request->num_tel;
+       $patient->email = $request->email;
        $patient->etat = $request->etat;
        $patient->sexe = $request->sexe;
        $patient->save();
@@ -127,6 +128,7 @@ class PatientController extends Controller
         'prenom' => 'required',
         'age' => 'required',
         'num_tel' => 'required',
+        'email' => 'required',
         'etat' => 'required',
         'sexe' => 'required',
         ];

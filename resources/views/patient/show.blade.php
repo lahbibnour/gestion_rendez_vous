@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @include('layouts.navbar')
+<<<<<<< HEAD
 
 @section('content')
 
@@ -16,6 +17,19 @@
     <tr>
       <th scope="col">Age</th>
       <th scope="col"> Num telephone</th>
+=======
+@section('title', 'Details patient')
+
+@section('content')
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Age</th>
+      <th scope="col">Num telephone</th>
+      <th scope="col">Email</th>
+>>>>>>> 119a7d79895777c93b4d87938783b14544894b79
       <th scope="col">Etat</th>
       <th scope="col">sexe</th>
       <th>Action</th>
@@ -23,6 +37,7 @@
   </thead>
   <tbody>
     <tr>
+<<<<<<< HEAD
      
       <td>{{$patient->age}}</td>
       <td>{{ $patient->num_tel }}</td>
@@ -73,11 +88,22 @@
     </div>
   </div>
 </div>
+=======
+      <td>{{$patient->nom}}</td>
+      <td>{{$patient->prenom}}</td>
+      <td>{{$patient->age}}</td>
+      <td>{{ $patient->num_tel }}</td>
+      <td>{{ $patient->email}}</td>
+      <td>{{ $patient->etat }}</td>
+      <td>{{ $patient->sexe }}</td>
+      <td><a href="" class="btn btn-outline-info">Prendre un rendez-vous </a>
+>>>>>>> 119a7d79895777c93b4d87938783b14544894b79
 </td>
     </tr>
     
   </tbody>
 </table>
+<<<<<<< HEAD
 <h2>La liste des rendez-vous de patient <strong> {{$patient->prenom}} {{$patient->nom}}</strong> : </h2>
 <table class="table table-hover">
     <thead>
@@ -91,4 +117,6 @@
     </thead>
     
 </table>
+=======
+>>>>>>> 119a7d79895777c93b4d87938783b14544894b79
 @endsection
