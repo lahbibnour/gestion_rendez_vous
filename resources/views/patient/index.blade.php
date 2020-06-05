@@ -42,11 +42,7 @@
             
             <td>
             <div class="row">
-<<<<<<< HEAD
             <a href="{{ route('patient.show',$patient->id) }}" class="btn btn-outline-info">Details </a>
-=======
-            <a href="{{ route('patient.show',$patient->id) }}" class="btn btn-outline-danger">Details </a>
->>>>>>> 119a7d79895777c93b4d87938783b14544894b79
             <a href="{{route('patient.edit',$patient->id)}}" class="btn btn-outline-success">Modifier</a>
             
             </div></td>

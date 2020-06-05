@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\Rdv;
 use Illuminate\Http\Request;
 use DB;
 class PatientController extends Controller
@@ -71,16 +72,14 @@ class PatientController extends Controller
      * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($id)
     {
-        // $data  = DB::table('rdvs')
-        // ->join('patients', 'rdvs.patient_id', '=', 'patients.id')
-        // ->where('rdvs.patient_id', '=', 'patients.id')
-
-        // ->get();
         
-        //var_dump($data);
-        return view('patient.show',compact('patient'));
+        $patient=Patient::find($id);
+        $rdvs  = DB::table('rdvs')
+        ->where('patient_id', '=', $id)
+        ->get();
+         return view('patient.show' , ["patient" => $patient, "rdvs" => $rdvs]);
     }
 
     /**

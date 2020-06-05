@@ -19,10 +19,7 @@ class CreatePatientsTable extends Migration
             $table->string('prenom');
             $table->integer('age')->unsigned();
             $table->bigInteger('num_tel')->unsigned();
-<<<<<<< HEAD
-=======
             $table->string('email')->unique();
->>>>>>> 119a7d79895777c93b4d87938783b14544894b79
             $table->string('etat');
             $table->string('sexe');
             $table->timestamps();
