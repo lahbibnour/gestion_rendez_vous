@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
+use App\Patient;
+use App\Rdv;
+use App\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -15,17 +18,23 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        //30/05/2020 test
-       $info= DB::table('consultations')
-                    ->whereExists(function($query)
-                    {
-                        $query->select(DB::raw(1))
-                              ->from('rdvs')
-                              ->whereRaw('consultations.patient_id = rdvs.patient_id');
-                    })
-                    ->get();
-                    return view('consultation.index' , compact('info')); 
+        $data = DB::table('consultations')
+        ->join('rdvs' , 'rdvs.id' , '=' , 'consultations.rdv_id') 
+        ->join('patients' , 'patients.id' , '=' ,'rdvs.patient_id')
+        ->select('patients.nom' , 'patients.prenom' , 'consultations.patient_id' , 'rdvs.heure' , 'consultations.rdv_id' , 'consultations.id' , 'consultations.ordannance' , 'consultations.observation')
+        ->get();
+
+        return view('consultation.index' , compact('data'));
     }
+    public function today()
+    {
+        
+    }
+    /* new function */
+
+    
+
+    //end new function
 
     /**
      * Show the form for creating a new resource.
@@ -37,6 +46,22 @@ class ConsultationController extends Controller
         return view('consultation.create');
     }
 
+    public function Consulter($patient_id , $rdv_id)
+    {
+            $patient =  Patient::findOrFail($patient_id);
+            $rdv = Rdv::findOrFail($rdv_id);
+            
+            
+            return view('consultation.create' ,[
+                'patient'=>  $patient,
+                'Rdv' =>$rdv
+                
+                
+            ]);
+    }
+
+    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,16 +70,7 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'patient_id' => 'required' ,
-            'medecin_id' => 'required' ,
-            'rdv_id' => 'required' ,
-            'date' => 'required' ,
-            'duree' => 'required' ,
-            'observation' => 'required',
-            'ordannance' => 'required'
-
-        ]);
+        $request->validate($this->validationRules());
 
         $consultation = new Consultation;
 
@@ -69,7 +85,7 @@ class ConsultationController extends Controller
 
         $consultation->save();
 
-        return redirect()->route('rendez_vs.index')->with('AddConsultation', 'New Consultation Added successfully');
+        return redirect()->route('rendez_vs.index')->with('AddConsultation', 'Nouvelle Consultation Ajoutée avec succès');
         
     }
 
@@ -96,7 +112,7 @@ class ConsultationController extends Controller
      */
     public function edit(Consultation $consultation)
     {
-        //
+        return view('consultation.edit' , compact('consultation'));
     }
 
     /**
@@ -108,7 +124,10 @@ class ConsultationController extends Controller
      */
     public function update(Request $request, Consultation $consultation)
     {
-        //
+       $validatedData = $request->validate($this->validationRules());
+       $consultation->update('validatedData');
+       return redirect()->route('consultation.show' , $consultation->id)->with('updateConsultation', ' Consultation updated successfully');
+
     }
 
     /**
@@ -120,5 +139,19 @@ class ConsultationController extends Controller
     public function destroy(Consultation $consultation)
     {
         //
+    }
+
+    private function validationRules()
+    {
+        return [
+            'patient_id' => 'required' ,
+            'medecin_id' => 'required' ,
+            'rdv_id' => 'required' ,
+            'date' => 'required' ,
+            'duree' => 'required' ,
+            'observation' => 'required',
+            'ordannance' => 'required'
+
+        ];
     }
 }

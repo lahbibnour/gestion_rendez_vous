@@ -31,5 +31,15 @@ Route::resource('/rendez_vs' , 'RdvController');
 //21/05/2020
 
 Route::resource('/consultation', 'ConsultationController');
+//2/6/2020
 
+Route::get('/today' , 'ConsultationController@today');
 
+//6-6-2020
+
+//contact
+
+Route::get('contact' , 'ContactController@create');
+Route::post('contact' , 'ContactController@store');
+
+Route::get('/consultation/{patient_id}/{rdv_id}' , 'ConsultationController@consulter')->name('consultation');

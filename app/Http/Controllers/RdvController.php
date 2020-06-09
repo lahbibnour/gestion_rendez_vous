@@ -20,6 +20,7 @@ class RdvController extends Controller
         $data = DB::table('rdvs')
                 -> join('patients' , 'patients.id' ,'=' , 'rdvs.patient_id')
                 ->select ('rdvs.id','patients.nom' , 'patients.prenom' , 'rdvs.dateRdv' , 'rdvs.heure')
+                ->orderBy('rdvs.heure' , 'desc')
                 ->paginate();
         return view('rendez_vs.index' , compact('data'));        
     

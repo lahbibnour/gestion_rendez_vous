@@ -19,11 +19,9 @@
                         </li>
                         <!-- 28/05/2020 -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordonnance</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown09">
-                            <a class="dropdown-item" href="#">nouvelle ordonnance</a>
-                            <a class="dropdown-item" href="#">Mes Ordonnances du jour</a> 
-                            <a class="dropdown-item" href="#">Archive d'Ordonnances</a>   
+                            <a class="nav-link " href="{{ route('consultation.index') }}" >liste tous mes rendez vous</a>
+                            
+                           
                         </li>
 
                         <!-- end 28/05/2020 -->

@@ -27,9 +27,9 @@
     <h5>Identifiant Patient : {{ $data -> patient_id }}</h5>
     <h5>Etat : {{ $data -> patient -> etat }}</h5>
     <h5> date rendez-vous : {{ $data -> dateRdv }}</h5>
-    <h5> heure rdv : {{ $data -> heure }}</h5>
-    </p>
-    <a href="{{ route('consultation.create') }}" class="btn btn-outline-dark">Consultation</a>
+    <h5> heure rdv : {{ date('H:i', strtotime($data -> heure)) }}</h5>
+    </p>    
+    <a href="{{ route('consultation',['patient_id'=> $data -> patient_id, 'rdv_id'=>$data -> id ]) }}" class="btn btn-outline-dark">Consultation</a>
     <a href=" {{ route('consultation.show' , $data->id ) }} " class="btn btn-outline-dark">Dossier médical </a>
 
   </div>

@@ -47,8 +47,8 @@
                 <td>{{ $Rdvs ->id }}</td>  
                 <td>{{ $Rdvs ->nom }}</td>
                 <td>{{ $Rdvs -> prenom}}</td>
-                <td>{{ $Rdvs -> dateRdv}}</td>
-                <td>{{ $Rdvs -> heure}}</td>
+                <td>{{ $Rdvs -> dateRdv }}</td>
+                <td>{{ date('H:i', strtotime($Rdvs -> heure)) }}</td>
                 <td>
                     <a href=" {{ route('rendez_vs.show' , $Rdvs->id ) }} " class="btn btn-outline-dark">Plus De Détails </a>
 
