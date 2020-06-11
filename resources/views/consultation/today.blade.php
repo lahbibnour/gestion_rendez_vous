@@ -2,6 +2,7 @@
 @section('title', 'index consultations')
 @include('layouts.navbar')
 @section('content')
+@include('layouts.sideBar')
 
 
 <table class="table table-hover" id="consultation_table">

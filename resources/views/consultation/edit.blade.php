@@ -2,6 +2,8 @@
 @section('title', 'Edit consultation')
 @include('layouts.navbar')
 @section('content')
+@include('layouts.sideBar')
+
 
 <div class="container">
     <h1 style="text-align:center">Edit de la Consultation</h1>

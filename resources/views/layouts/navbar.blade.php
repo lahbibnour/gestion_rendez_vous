@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+    
         <a class="navbar-brand"  href="{{ url('/') }}">
         {{ config('app.name') , 'Gestion_rendez-vous' }}
         </a>
@@ -12,23 +12,40 @@
             @auth
                 <ul class="navbar-nav mr-auto">
                     @if(Auth::user()->admin) 
-                   
+                    <!-- test 11/06/2020 -->
+                   <!-- <div class="container-fluid">
+                        <div class="navbar-wrapper">
                         
                         <li class="nav-item">
                             <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Les Patients d'Aujourd'Hui</a>
                         </li>
-                        <!-- 28/05/2020 -->
+                         
                         <li class="nav-item dropdown">
                             <a class="nav-link " href="{{ route('consultation.index') }}" >liste tous mes rendez vous</a>
                             
                            
                         </li>
 
-                        <!-- end 28/05/2020 -->
+                         
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
+                            <a href="{{ route('contact.create') }}" class="nav-link">Contact</a>
                         </li>
-                        
+
+                        </div>
+                    </div>
+                    -->
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <form>
+                        <div class="input-group no-border">
+                            <input type="text" value="" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                            <div class="input-group-text">
+                                <i class="nc-icon nc-zoom-split"></i>
+                            </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
                     @else
 
                         <li class="nav-item dropdown">

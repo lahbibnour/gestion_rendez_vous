@@ -2,6 +2,8 @@
 @section('title', 'index consultations')
 @include('layouts.navbar')
 @section('content')
+@include('layouts.sideBar')
+
 
 @if(session('updateConsultation'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">

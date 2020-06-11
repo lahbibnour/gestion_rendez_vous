@@ -2,6 +2,8 @@
 @section('title', 'Contact')
 @include('layouts.navbar')
 @section('content')
+@include('layouts.sideBar')
+
 <div class="container">
     <h1>Contacter la Secretaire</h1>
 <form action="/contact" method="POST">

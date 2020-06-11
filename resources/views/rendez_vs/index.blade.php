@@ -4,6 +4,8 @@
 
 @include('layouts.navbar')
 @section('content')
+@include('layouts.sideBar')
+
 
 @if(session('AddConsultation'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">

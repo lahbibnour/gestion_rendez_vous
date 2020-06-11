@@ -5,6 +5,8 @@
 @include('layouts.navbar')
 
 @section('content')
+@include('layouts.sideBar')
+
 <div class="container">
 
 <div style="text-align:center ">
