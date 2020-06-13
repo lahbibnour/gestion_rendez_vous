@@ -1,10 +1,23 @@
 @extends('layouts.app')
 @section('title', 'Contact')
-@include('layouts.navbar')
 @section('content')
+<!-- Page Wrapper -->
+<div id="wrapper">
+<div class="sidebar" data-color="white" data-active-color="danger">
+<div class="sidebar-wrapper">
 @include('layouts.sideBar')
-
-<div class="container">
+</div>
+</div>
+<div class="main-panel">
+<div class="container-fluid">
+@include('layouts.navbar')
+</div>
+<!-- My test -->
+<div class="main-panel" style="height: 100vh;">
+     <div class="content">
+       <div class="row">
+         <div class="col-md-12">
+         <div class="card demo-icons">
     <h1>Contacter la Secretaire</h1>
 <form action="/contact" method="POST">
 @csrf 
@@ -32,6 +45,10 @@
 
     <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
-    
 </div>
+ </div>
+ </div>
+ </div>
+ </div>   
+
 @endsection

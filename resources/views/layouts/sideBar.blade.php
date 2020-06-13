@@ -1,20 +1,17 @@
-@auth
-@if(Auth::user()->admin) 
-
-<div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
-                <a href="https://www.creative-tim.com" class="simple-text logo-mini">
             <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
+            <img src="image/medical-logo.jpg" width="80 px" height="80 px" alt="" class="img" border-radius="50 px" >
+            </div>
             </div>
         </a>
 
       @auth
+      
             <ul class="nav">
                 @if(Auth::user()->admin)                        
                     <li class="active">
                         <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Les Patients d'Aujourd'Hui</a>
-                        <i class="nc-icon nc-bank"></i>
+                        
                         </li>
                         <!-- 28/05/2020 -->
                         <li class="nav-item dropdown">
@@ -27,7 +24,7 @@
                         </li>
 
                         
-                    
+                   
                         
                     @else
 
@@ -43,7 +40,5 @@
                 </ul>
             @endauth
       </div>
-    </div>
-    @endif
-</div>
-    @endauth
+    
+  

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Rdv;
+use App\Patient;
+use App\Consultation;
 use Illuminate\Http\Request;
 use DB;
 
@@ -57,6 +59,14 @@ class RdvController extends Controller
     {
         $data = Rdv::findOrFail($id);
         return view('rendez_vs.show' , compact('data')); 
+    }
+    public function show2($id)
+    {
+        $consultation=Consultation::find($id);
+        $rdvs  = DB::table('rdvs')
+        ->where('patient_id', '=', $id)
+        ->get();
+         return view('rendez_vs.show2' , ["consultation" => $consultation, "rdvs" => $rdvs]);
     }
 
     /**

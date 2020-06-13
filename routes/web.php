@@ -43,3 +43,4 @@ Route::get('contact' , 'ContactController@create')->name('contact.create');
 Route::post('contact' , 'ContactController@store');
 
 Route::get('/consultation/{patient_id}/{rdv_id}' , 'ConsultationController@consulter')->name('consultation');
+Route::get('/rendez_vs/{patient_id}' , 'RdvController@show2')->name('rendez_vs.show2');

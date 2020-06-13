@@ -98,8 +98,11 @@ class ConsultationController extends Controller
     public function show($id)
     {
        
-        $data = Consultation::findOrFail($id);
-        return view('consultation.show' , compact('data'));
+        $consultation=Consultation::find($id);
+        $rdvs  = DB::table('rdvs')
+        ->where('patient_id', '=', $id)
+        ->get();
+         return view('consultation.show' , ["consultation" => $consultation, "rdvs" => $rdvs]);
         
         
     }

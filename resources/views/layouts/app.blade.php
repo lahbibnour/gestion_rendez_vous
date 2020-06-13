@@ -21,7 +21,7 @@
         <link href="{{asset('css/paper-dashboard.css?v=2.0.1') }}" rel="stylesheet" />
 
 </head>
-<body id="page-top" class="">
+<body  class="">
 
     <div id="app">
         <main>
