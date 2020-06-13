@@ -20,10 +20,14 @@
     </button>
 </div>
 @endif
+<form>
+          <input type="text" value="" class="form-control" onkeyup="myFunction()" id="myInput" placeholder="Search..." autofocus>
+            <i class="fa fa-search"></i>
+      </form>
 <a href="{{ route('patient.create') }}" class="btn btn-secondary btn-lg btn-lg float-right" role="button"
     aria-pressed="true">Ajouter nouveau Patient</a>
 <h1>Liste des patients</h1>
-<table class="table table-hover">
+<table class="table table-hover" id="myTable">
     <thead>
         <tr>
 
@@ -50,6 +54,31 @@
         </tr>
         @endforeach
     </tbody>
+    <script>
+          function myFunction() 
+          {
+            var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("myTable");
+              tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) 
+                {
+                  td = tr[i].getElementsByTagName("td")[0];
+                    if (td) 
+                    {
+                      txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) 
+                        {
+                            tr[i].style.display = "";
+                        } else 
+                        {
+                            tr[i].style.display = "none";
+                        }
+                    }     
+                }
+            }
+        </script>
 </table>
 
 @endsection
