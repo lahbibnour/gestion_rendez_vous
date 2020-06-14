@@ -100,7 +100,7 @@ class RdvController extends Controller
     {
         $rdv->delete();
 
-        return redirect()->route('patient.show')->with('deleteRdv', 'le rendez-vous a été bien supprimé');
+        return redirect()->route('patient.show')->with('deleteRdv', 'le RDV a été bien supprimé');
     }
     private function validationRules()
     {
