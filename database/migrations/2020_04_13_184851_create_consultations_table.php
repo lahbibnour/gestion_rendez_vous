@@ -25,7 +25,6 @@ class CreateConsultationsTable extends Migration
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('medecin_id')->references('id')->on('medecins');
 
-
         });
     }
 

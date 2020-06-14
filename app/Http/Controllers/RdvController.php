@@ -16,15 +16,16 @@ class RdvController extends Controller
      */
     public function index()
     {
-        
         $data = DB::table('rdvs')
                 -> join('patients' , 'patients.id' ,'=' , 'rdvs.patient_id')
                 ->select ('rdvs.id','patients.nom' , 'patients.prenom' , 'rdvs.dateRdv' , 'rdvs.heure')
                 ->orderBy('rdvs.heure' , 'desc')
                 ->paginate();
-        return view('rendez_vs.index' , compact('data'));        
-    
+        return view('rendez_vs.index' , compact('data'));  
+       
     }
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +34,7 @@ class RdvController extends Controller
      */
     public function create()
     {
-        //
+        return view('patient.show');
     }
 
     /**
@@ -44,7 +45,16 @@ class RdvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+   $request->validate($this->validationRules());
+    $rdv = new Rdv;
+          $rdv->patient_id=$request->patient_id;
+          $rdv->dateRdv = $request->dateRdv;
+          $rdv->heure= $request->heure;
+          $rdv->save();
+    
+         return redirect()->route('patient.show',$rdv->patient_id)->with('AjouterRdv', 'Nouveau Rdv a été pris');
+         dd($request);
     }
 
     /**
@@ -59,6 +69,7 @@ class RdvController extends Controller
         return view('rendez_vs.show' , compact('data')); 
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -67,7 +78,8 @@ class RdvController extends Controller
      */
     public function edit(Rdv $rdv)
     {
-        //
+        return view('rdv.edit', compact('edit'));
+
     }
 
     /**
@@ -79,7 +91,11 @@ class RdvController extends Controller
      */
     public function update(Request $request, Rdv $rdv)
     {
-        //
+        $validatedData = $request->validate($this->validationRules());
+
+        $rdv->update($validatedData);
+
+        return redirect()->route('patient.show', $rdv->id)->with('updateRdv', 'rendez-vous a été bien modifié');
     }
 
     /**
@@ -90,6 +106,16 @@ class RdvController extends Controller
      */
     public function destroy(Rdv $rdv)
     {
-        //
+        $rdv->delete();
+
+        return redirect()->route('patient.show')->with('deleteRdv', 'le RDV a été bien supprimé');
+    }
+    private function validationRules()
+    {
+        return [
+            'patient_id'=> 'required',
+            'heure' => 'required',
+            'dateRdv' => 'required',
+        ];
     }
 }

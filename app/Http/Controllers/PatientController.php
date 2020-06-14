@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
-use Illuminate\Http\Request;
 use App\Rdv;
-
+use Illuminate\Http\Request;
+use DB;
 class PatientController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        
+        $patients = Patient::all();
+
+        return view('patient.index',compact('patients'));
     }
 
     /**
@@ -25,7 +38,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        
+       return view('patient.create');
     }
 
     /**
@@ -36,7 +49,20 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        
+
+       $request->validate($this->validationRules());
+       $patient = new Patient;
+       $patient->nom = $request->nom;
+       $patient->prenom = $request->prenom;
+       $patient->age = $request->age;
+       $patient->num_tel = $request->num_tel;
+       $patient->email = $request->email;
+       $patient->etat = $request->etat;
+       $patient->sexe = $request->sexe;
+       $patient->save();
+       //dd($request);
+       return redirect()->route('patient.index')->with('AjouterPatient', 'Nouveau patient a été ajouté');
+
 
     }
 
@@ -46,9 +72,14 @@ class PatientController extends Controller
      * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($id)
     {
-        //
+        
+        $patient=Patient::find($id);
+        $rdvs  = DB::table('rdvs')
+        ->where('patient_id', '=', $id)
+        ->get();
+         return view('patient.show' , ["patient" => $patient, "rdvs" => $rdvs]);
     }
 
     /**
@@ -59,7 +90,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patient.edit', compact('patient'));
     }
 
     /**
@@ -71,7 +102,11 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $validatedData = $request->validate($this->validationRules());
+
+        $patient->update($validatedData);
+
+        return redirect()->route('patient.index', $patient->id)->with('updatePatient', 'patient a été bien modifié');
     }
 
     /**
@@ -82,6 +117,19 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+
+        return redirect()->route('patient.index')->with('deletePatient', 'le patient a été bien supprimé');
+    }
+    private function validationRules()
+    {
+        return ['nom' => 'required',
+        'prenom' => 'required',
+        'age' => 'required',
+        'num_tel' => 'required',
+        'email' => 'required',
+        'etat' => 'required',
+        'sexe' => 'required',
+        ];
     }
 }

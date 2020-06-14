@@ -20,7 +20,7 @@
     Détails Rendez-vous Patient
   </div>
   <div class="card-body">
-    <h3 class="card-title"> {{ $data -> patient -> nom }} {{ $data ->patient -> prenom }}</h3>
+    <h3 class="card-title"> {{ $data -> Patient -> nom }} {{ $data ->Patient -> prenom }}</h3>
     <p class="card-text">
     
     <h5>Identifiant rendez-vous : {{ $data -> id }}</h5>

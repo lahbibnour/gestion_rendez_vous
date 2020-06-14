@@ -16,12 +16,12 @@ class CreateRdvsTable extends Migration
         Schema::create('rdvs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('patient_id')->unsigned();
-            $table->bigInteger('secretaire_id')->unsigned();
+
             $table->date('dateRdv');
-            $table->dateTime('heure');
+            $table->time('heure');
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('secretaire_id')->references('id')->on('secretaires');
+
         });
     }
 

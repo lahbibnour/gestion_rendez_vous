@@ -18,6 +18,5 @@ class Consultation extends Model
     {
         return $this->belongsTo('App\Rdv');
     }
-   
-
+     
 }
