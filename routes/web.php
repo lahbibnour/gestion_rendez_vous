@@ -25,7 +25,7 @@ Route::get('/secretaire', 'SecretaireController@test2')->name('secretaire')->mid
 
 
 
-//>>>>>>> interface se connecter
+
 Route::resource('/rendez_vs' , 'RdvController');
 
 //21/05/2020

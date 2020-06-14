@@ -37,6 +37,7 @@
                             <a href="#" class="nav-link">Contact</a>
                         </li>
                     @endif
+                    
                 </ul>
             @endauth
       </div>

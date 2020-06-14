@@ -60,9 +60,6 @@
                                 <td>{{ date('H:i', strtotime($Rdvs -> heure)) }}</td>
                                 <td>
                                     <a href=" {{ route('rendez_vs.show' , $Rdvs->id ) }} " class="btn btn-outline-dark">Plus De Détails </a>
-                                    <a href="  " class="btn btn-outline-dark">Dossier médical </a>
-
-
                                 </td>
                             </tr>
                         @endif

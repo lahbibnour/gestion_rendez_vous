@@ -40,7 +40,7 @@
           <h5> heure rdv : {{ date('H:i', strtotime($data -> heure)) }}</h5>
         </p>    
         <a href="{{ route('consultation',['patient_id'=> $data -> patient_id, 'rdv_id'=>$data -> id ]) }}" class="btn btn-outline-dark">Consultation</a>
-        <a href=" {{ route('consultation.show' , $data->id ) }} " class="btn btn-outline-dark">Dossier médical </a>
+        <a href=" {{ route('consultation.show' , $data-> patient_id ) }} " class="btn btn-outline-dark">Dossier médical </a>
       </div>
     </div>
 </div>

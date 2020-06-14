@@ -8,48 +8,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            @auth
-                <ul class="navbar-nav mr-auto">
-                    @if(Auth::user()->admin) 
-                    <!-- test 11/06/2020 -->
-                   <!-- <div class="container-fluid">
-                        <div class="navbar-wrapper">
-                        
-                        <li class="nav-item">
-                            <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Les Patients d'Aujourd'Hui</a>
-                        </li>
-                         
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="{{ route('consultation.index') }}" >liste tous mes rendez vous</a>
-                            
-                           
-                        </li>
+           
 
-                         
-                        <li class="nav-item">
-                            <a href="{{ route('contact.create') }}" class="nav-link">Contact</a>
-                        </li>
-
-                        </div>
-                    </div>
-                    -->
-                    
-                    @else
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Patient</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown09">
-                            <a class="dropdown-item" href="/patient">Liste Patient</a>   
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
-                        </li>
-                    @endif
-                </ul>
-            @endauth
-
-            <!-- Right Side Of Navbar -->
+            
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
