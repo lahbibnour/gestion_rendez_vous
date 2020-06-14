@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+<head>
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    </head>
+
 <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
-    <img src="image/medical-logo.jpg" width="80 px" height="80 px" alt="" class="img" border-radius="50 px" >
+    <img src="/image/medical-logo.jpg" width="80 px" height="80 px" alt="" class="img" border-radius="50 px" >
 
         <a class="navbar-brand" href="{{ url('/') }}">
            
@@ -77,3 +86,4 @@
         </div>
     </div>
 </nav>
+</html>

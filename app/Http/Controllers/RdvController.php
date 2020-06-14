@@ -70,7 +70,7 @@ class RdvController extends Controller
      */
     public function edit(Rdv $rdv)
     {
-        return view('rdv.edit', compact('edit'));
+        return view('rdv.edit', compact('rdv'));
 
     }
 
@@ -87,7 +87,7 @@ class RdvController extends Controller
 
         $rdv->update($validatedData);
 
-        return redirect()->route('patient.show', $rdv->id)->with('updateRdv', 'rendez-vous a été bien modifié');
+        return redirect()->route('patient.show', $rdv->patient_id)->with('updateRdv', 'rendez-vous a été bien modifié');
     }
 
     /**
@@ -98,14 +98,15 @@ class RdvController extends Controller
      */
     public function destroy(Rdv $rdv)
     {
+        if ($rdv !=null){
         $rdv->delete();
 
-        return redirect()->route('patient.show')->with('deleteRdv', 'le RDV a été bien supprimé');
+        return redirect()->route('patient.show',$rdv->patient_id)->with('deleteRdv', 'le RDV a été bien supprimé');
+        }
     }
     private function validationRules()
     {
         return [
-            'patient_id'=> 'required',
             'heure' => 'required',
             'dateRdv' => 'required',
         ];

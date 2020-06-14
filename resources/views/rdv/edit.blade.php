@@ -6,7 +6,7 @@
 <fieldset>
         <legend>Modifier les coordonnés de rendez-vous</legend>
         <form action="{{ route('rdv.update',$rdv->id) }}" method="post">
-            @csrf
+        @csrf
             @method('PATCH')
             <div class="row">
                 <div class="col">
