@@ -16,15 +16,12 @@ class CreateConsultationsTable extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('patient_id')->unsigned();
-            $table->bigInteger('medecin_id')->unsigned();
             $table->date('date');
             $table->time('duree');
             $table->text('ordannance',100000);
             $table->text('observation',100000);
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('medecin_id')->references('id')->on('medecins');
-
         });
     }
 

@@ -4,13 +4,13 @@
 
 use App\Consultation;
 use App\Patient;
-use App\Medecin;
+use App\Rdv;
 use Faker\Generator as Faker;
 
 $factory->define(Consultation::class, function (Faker $faker) {
     return [
         'patient_id' => Patient::get('id')->random(),
-        'medecin_id' => Medecin::get('id')->random(),
+        'rdv_id' => Rdv::get('id')->random(),
         'date' => $faker->date,
         'duree' => $faker->time,
         'ordannance'=> $faker->sentence,

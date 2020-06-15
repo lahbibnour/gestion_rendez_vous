@@ -20,21 +20,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', 'AppController@home')->name('home');
     //Route::get('/rdv/{patient_id}', 'RdvController@getRdv');
     Route::resource('/patient', 'PatientController');
+    Route::resource('/rendez_vs', 'RdvController');
     Route::resource('/rdv', 'RdvController');
+    Route::resource('/consultation', 'ConsultationController');
     //Route::get('/patient/{patient_id}', 'JoinController@GetRdv');
+    Route::get('contact' , 'ContactController@create')->name('contact.create');
+Route::post('contact' , 'ContactController@store');
+Route::get('/consultation/{patient_id}/{rdv_id}' , 'ConsultationController@consulter')->name('consultation');
+
 });
-Route::resource('/rendez_vs' , 'RdvController');
+
 
 //21/05/2020
 
-Route::resource('/consultation', 'ConsultationController');
-//2/6/2020
-Route::get('/today' , 'ConsultationController@today');
 
-Route::get('contact' , 'ContactController@create')->name('contact.create');
-Route::post('contact' , 'ContactController@store');
 
-Route::get('/consultation/{patient_id}/{rdv_id}' , 'ConsultationController@consulter')->name('consultation');
+
+
 
 
 

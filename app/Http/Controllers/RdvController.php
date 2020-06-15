@@ -19,7 +19,7 @@ class RdvController extends Controller
         $data = DB::table('rdvs')
                 -> join('patients' , 'patients.id' ,'=' , 'rdvs.patient_id')
                 ->select ('rdvs.id','patients.nom' , 'patients.prenom' , 'rdvs.dateRdv' , 'rdvs.heure')
-                ->orderBy('rdvs.heure' , 'desc')
+                
                 ->paginate();
         return view('rendez_vs.index' , compact('data'));  
        
@@ -78,7 +78,7 @@ class RdvController extends Controller
      */
     public function edit(Rdv $rdv)
     {
-        return view('rdv.edit', compact('edit'));
+        return view('rdv.edit', compact('rdv'));
 
     }
 
@@ -106,14 +106,16 @@ class RdvController extends Controller
      */
     public function destroy(Rdv $rdv)
     {
+        if($rdv != null){
         $rdv->delete();
 
-        return redirect()->route('patient.show')->with('deleteRdv', 'le RDV a été bien supprimé');
+        return redirect()->route('patient.show' , $rdv->patient_id)->with('deleteRdv', 'le RDV a été bien supprimé');
     }
+}
     private function validationRules()
     {
         return [
-            'patient_id'=> 'required',
+            
             'heure' => 'required',
             'dateRdv' => 'required',
         ];

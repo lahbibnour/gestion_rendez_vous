@@ -25,7 +25,7 @@
 
 <div class="container">
 <div class="jumbotron">
-<h1 style="text-align:center">Liste rendez vous</h1>
+<h1 style="text-align:center">Liste rendez vous à partir d'aujourd'hui</h1>
 </div>
 
 <table class="table table-hover">
@@ -42,7 +42,7 @@
   </thead>
   <tbody>
   @foreach($data as $Rdvs)
-        @if($Rdvs->heure >= now())
+        @if($Rdvs->dateRdv >= NOW() ))
             <tr>
             
                 <td>{{ $Rdvs ->id }}</td>  

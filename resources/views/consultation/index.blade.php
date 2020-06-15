@@ -3,7 +3,7 @@
 @include('layouts.navbar')
 @section('content')
 
-<h1 style="text-align:center">Tous Mes Rendez-vous</h1>
+<h1 style="text-align:center">La Liste des Consultations</h1>
             <form>
             
                 <input type="text" value="" class="form-control" onkeyup="myFunction()" id="myInput" placeholder="Search..." autofocus>

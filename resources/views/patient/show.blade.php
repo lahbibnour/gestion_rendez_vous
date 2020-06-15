@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @include('layouts.navbar')
 
@@ -151,7 +152,10 @@
             onclick="event.preventDefault();
             document.querySelector('#delete-rdv-form').submit();">Confirm delete</button>
         </div>
-       
+        <form id="delete-rdv-form" action="{{ route('rdv.destroy', $rdv->id) }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
-    <img src="image/medical-logo.jpg" width="80 px" height="80 px" alt="" class="img" border-radius="50 px" >
+    <img src="/image/medical-logo.jpg" width="80 px" height="80 px" alt="" class="img" border-radius="50 px" >
 
         <a class="navbar-brand" href="{{ url('/') }}">
            
@@ -18,11 +18,11 @@
                @if(Auth::user()->admin)
 
                <li class="nav-item">
-                            <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Les Patients d'Aujourd'Hui</a>
+                            <a href=" {{ route('rendez_vs.index') }}" class="nav-link">Liste rendez-vous</a>
                         </li>
                         <!-- 28/05/2020 -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link " href="{{ route('consultation.index') }}" >liste tous mes rendez vous</a>
+                            <a class="nav-link " href="{{ route('consultation.index') }}" >liste Consultations</a>
                             
                            
                         </li>
